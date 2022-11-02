@@ -1,0 +1,16 @@
+/**:
+  ros__parameters:
+    trigger_mode: "freerun"  # freerun (topics), software (services)
+    operation_mode: "camera"  # camera (quicker, lower quality), scanner (slower, higher quality), mode2d (only texture)
+    hardware_id: ""  # camera serial number
+    use_pointcloud: True
+    use_color_camera_image: False
+    use_confidence_map: False
+    use_depth_map: True
+    use_event_map: False
+    use_normal_map: False
+    use_texture: False
+    save_dir: ""  # absolute path for saving output data
+    roi: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # min x, y, z, max x, y, z
+    tf_prefix: "phoxi" # any prefix is required
+    debug: False  # prints processing time

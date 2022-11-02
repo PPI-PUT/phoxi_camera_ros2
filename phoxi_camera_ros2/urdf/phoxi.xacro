@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot name="phoxi" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="phoxi_macro" params="prefix phoxi_model x y z roll pitch yaw">
+
+    <link name="${prefix}_base_link">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh scale="0.001 0.001 0.001" filename="package://phoxi_camera_ros2/meshes/${phoxi_model}.stl" />
+        </geometry>
+        <material name="dark">
+          <color rgba="0.2 0.2 0.2 1.0"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="${prefix}_base_to_camera_joint" type="fixed">
+      <origin rpy="${roll} ${pitch} ${yaw}" xyz="${x} ${y} ${z}"/>
+      <parent link="${prefix}_base_link"/>
+      <child link="${prefix}_camera_link"/>
+    </joint>
+    <link name="${prefix}_camera_link">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </link>
+
+    <joint name="${prefix}_base_to_fov_joint" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}_base_link"/>
+      <child link="${prefix}_fov_link"/>
+    </joint>
+    <link name="${prefix}_fov_link">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh scale="0.001 0.001 0.001" filename="package://phoxi_camera_ros2/meshes/${phoxi_model}_FOV.stl" />
+        </geometry>
+        <material name="green">
+          <color rgba="0.1 1.0 0.1 0.1"/>
+        </material>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

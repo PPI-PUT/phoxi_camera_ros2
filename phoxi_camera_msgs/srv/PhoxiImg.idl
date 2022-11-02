@@ -1,0 +1,15 @@
+#include "sensor_msgs/msg/Image.idl"
+
+module phoxi_camera_msgs {
+  module srv {
+    struct PhoxiImg_Request
+    {
+      @verbatim(language = "comment", text = "Is data saved to file")
+      boolean save;
+    };
+    struct PhoxiImg_Response
+    {
+      sensor_msgs::msg::Image image;
+    };
+  };
+};

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="phoxi" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <xacro:arg name="config_dir" default="$(find phoxi_camera_ros2)/param"/>
+  <xacro:property name="config" value="${load_yaml('$(arg config_dir)/defaults.param.yaml')}"/>
+  
+  <xacro:include filename="phoxi.xacro"/>
+  <xacro:phoxi_macro
+    prefix="${config['/**']['ros__parameters']['tf_prefix']}"
+    phoxi_model="M+_Motion_Cam-3D"
+    x="0.0628"
+    y="-0.1728"
+    z="0.0326"
+    roll="${-pi / 2}"
+    pitch="0.0"
+    yaw="${-pi / 2}"
+  />
+
+</robot>
