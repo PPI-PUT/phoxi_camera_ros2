@@ -1,0 +1,15 @@
+#include "sensor_msgs/msg/PointCloud2.idl"
+
+module phoxi_camera_msgs {
+  module srv {
+    struct PhoxiCloud_Request
+    {
+      @verbatim(language = "comment", text = "Is data saved to file")
+      boolean save;
+    };
+    struct PhoxiCloud_Response
+    {
+      sensor_msgs::msg::PointCloud2 cloud;
+    };
+  };
+};

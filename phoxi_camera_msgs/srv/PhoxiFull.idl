@@ -1,0 +1,22 @@
+#include "sensor_msgs/msg/PointCloud2.idl"
+#include "sensor_msgs/msg/Image.idl"
+
+module phoxi_camera_msgs {
+  module srv {
+    struct PhoxiFull_Request
+    {
+      @verbatim(language = "comment", text = "Is data saved to files")
+      boolean save;
+    };
+    struct PhoxiFull_Response
+    {
+      sensor_msgs::msg::PointCloud2 cloud;
+      sensor_msgs::msg::Image color_camera_image;
+      sensor_msgs::msg::Image confidence_map;
+      sensor_msgs::msg::Image depth_map;
+      sensor_msgs::msg::Image event_map;
+      sensor_msgs::msg::Image normal_map;
+      sensor_msgs::msg::Image texture;
+    };
+  };
+};
