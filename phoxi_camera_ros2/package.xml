@@ -12,11 +12,14 @@
   <depend>cv_bridge</depend>
   <depend>libopencv-dev</depend>
   <depend>libpcl-all-dev</depend>
+  <depend>libqt5-svg-dev</depend>
   <depend>pcl_conversions</depend>
   <depend>phoxi_camera_msgs</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>rclcpp_lifecycle</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz2</depend>
   <depend>sensor_msgs</depend>
   <depend>xacro</depend>
 

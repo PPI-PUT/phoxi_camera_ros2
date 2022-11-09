@@ -4,18 +4,48 @@ See [user manual](https://www.photoneo.com/downloads/phoxi-control) for more inf
 
 https://user-images.githubusercontent.com/37396312/199533561-61334579-3e52-4fe0-b88e-f717877cce02.mp4
 
+
 ## Requirements
-* Ubuntu (tested with 20.04)
 * PhoXi Control (tested with 1.9)
-* ROS2 (tested with galactic)
-* PCL (tested with 1.10)
-* OpenCV (tested with 4.20)
+* ROS2 humble
+* PCL (tested with 1.12)
+* OpenCV (tested with 4.5.4)
+
+Optional:
+* Docker
+* [Rocker](https://github.com/osrf/rocker)
 
 
 ## Installation & building
+### Host
 ```
+cd $HOME
+mkdir -p phoxi_ws/src && cd phoxi_ws
+git clone https://github.com/PPI-PUT/phoxi_camera_ros2 src/phoxi_camera_ros2
 rosdep install --from-paths src --ignore-src -y
 colcon build --symlink-install --packages-up-to phoxi_camera_ros2 --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On
+```
+or
+### Docker
+```
+cd $HOME
+mkdir -p phoxi_ws/src && cd phoxi_ws
+git clone https://github.com/PPI-PUT/phoxi_camera_ros2 src/phoxi_camera_ros2
+cd src/phoxi_camera_ros2/docker
+```
+Download and copy [PhoXi Control 1.9.1 (Ubuntu 20)](https://www.photoneo.com/downloads/phoxi-control) here as *PhotoneoPhoXiControlInstaller-1.9.1-Ubuntu20-STABLE.tar.gz*
+```
+./build.sh
+```
+After build finished, run container. If you used custom path for this package, you need to change volume path in run.sh file. 
+```
+./run.sh
+cd phoxi_ws
+colcon build --symlink-install --packages-up-to phoxi_camera_ros2 --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=On
+```
+To use another terminal, open new terminal window and use script.
+```
+./enter.sh
 ```
 
 ## Usage
@@ -23,6 +53,7 @@ colcon build --symlink-install --packages-up-to phoxi_camera_ros2 --cmake-args -
 2. Configure param file (phoxi_camera_ros2/param/defaults.param.yaml).
 3. Run main nodes - you don't need to run PhoXiControl by hand!
 ```
+source install/setup.bash
 ros2 launch phoxi_camera_ros2 phoxi_camera.launch.py 
 ```
 In case of `software` mode, you may run it `with_rviz:=False` flag. 

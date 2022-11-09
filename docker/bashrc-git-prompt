@@ -1,0 +1,15 @@
+# see https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# Installed version might not support all options. If you miss something please open a ticket.
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="verbose"
+export GIT_PS1_DESCRIBE_STYLE=contains
+export GIT_PS1_SHOWCOLORHINTS=1
+PRE='\[\033[01;33m\]($ROS_DISTRO) \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
+
+export PROMPT_COMMAND="__git_ps1 '"'${VIRTUAL_ENV:+($(basename "$VIRTUAL_ENV")) }'"$PRE' '$ '"
+
+export RCUTILS_COLORIZED_OUTPUT=1
+export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
+

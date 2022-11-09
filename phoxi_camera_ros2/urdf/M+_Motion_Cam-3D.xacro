@@ -2,7 +2,7 @@
 <robot name="phoxi" xmlns:xacro="http://ros.org/wiki/xacro">
   
   <xacro:arg name="config_dir" default="$(find phoxi_camera_ros2)/param"/>
-  <xacro:property name="config" value="${load_yaml('$(arg config_dir)/defaults.param.yaml')}"/>
+  <xacro:property name="config" value="${xacro.load_yaml('$(arg config_dir)/defaults.param.yaml')}"/>
   
   <xacro:include filename="phoxi.xacro"/>
   <xacro:phoxi_macro

@@ -26,7 +26,7 @@ from launch.actions import ExecuteProcess
 from launch.conditions import IfCondition
 from launch_ros.actions import Node
 from launch_ros.events.lifecycle import ChangeState
-from launch_ros.events.lifecycle import matches_node_name
+from launch_ros.events import matches_node_name
 from launch_ros.event_handlers import OnStateTransition
 from launch.actions import LogInfo
 from launch.events import matches_action
@@ -95,7 +95,7 @@ def generate_launch_description():
         OnShutdown(
             on_shutdown=[
                 EmitEvent(event=ChangeState(
-                  lifecycle_node_matcher=matches_node_name(node_name=phoxi_camera_node),
+                  lifecycle_node_matcher=matches_node_name(node_name="phoxi_camera"),
                   transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN,
                 )),
                 LogInfo(
