@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> /home/${USER}/.bashrc;
+echo "export ROS_DOMAIN_ID=0" >> /home/${USER}/.bashrc;
+
+if [ -d /home/${USER}/phoxi_ws ]; then 
+    echo "source /home/${USER}/phoxi_ws/install/setup.bash" >> /home/${USER}/.bashrc; 
+fi
+
+sudo service dbus start
+sudo service avahi-daemon start
+
+echo 'Startup completed.'
+exec "$@"
